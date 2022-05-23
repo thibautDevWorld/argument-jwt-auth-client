@@ -29,7 +29,7 @@ function UserHomePage() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        console.log("hello");
+        console.log("response.data");
         setFolders(response.data)
       })
       .catch((error) => console.log(error));
@@ -48,11 +48,10 @@ function UserHomePage() {
       <div>
         <NavLink to="/create-folder">Create a folder</NavLink>
       </div>
-      {console.log(userId)}
-        {folders.map((folder) => {
+              {folders.map((folder) => {
           return (
             <div className="ProjectCard card" key={folder._id} >
-              <Link to={`/folder/${folder._id}`}>
+              <Link to={`/articles-list/${folder._id}`}>
                 <h3>{folder.title}</h3>
               </Link>
             </div>
