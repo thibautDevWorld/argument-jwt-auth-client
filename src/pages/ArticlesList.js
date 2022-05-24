@@ -11,7 +11,7 @@ function ArticlesList() {
 
     const storedToken = localStorage.getItem('authToken');
 
-    
+
     const getArticles = () => {
         axios
             .get(
@@ -29,23 +29,52 @@ function ArticlesList() {
         getArticles();
     }, []);
 
+    console.log(articles);
 
+    const deleteArticle = (articleId) => {
 
-    return ( 
-        
+        console.log(articleId);
+
+        const storedToken = localStorage.getItem('authToken');
+
+        axios.delete(
+            `${process.env.REACT_APP_API_URL}/articles/${articleId}`,
+            { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+            .then(response => {
+                console.log("article deleted");
+                getArticles()
+            })
+            .catch(e => console.log("error deleting project...", e));
+    }
+
+    return (
+
         <div>
             <p>List of articles</p>
+            <div>
+                <Link to={`/create-article/${folderId}`}>Create an article</Link>
+            </div>
             {articles.map((article) => {
                 return (
-                    <div key={article._id}>
-                         <Link to={`/article-details/${article._id}`}>
-                <h3>{article.title}</h3>
-              </Link>
+                    <div>
+
+                        <div key={article._id}>
+                            <Link to={`/article-details/${article._id}`}>
+                                <h3>{article.title}</h3>
+                            </Link>
+                        </div>
+                        <div className="ProjectCard card" >
+                            <Link to={`/update-article/${article._id}`}>
+                                <h3>Update</h3>
+                            </Link>
+                            <a href="#" onClick={() => {deleteArticle(article._id)}}>Delete</a>
+                        </div>
                     </div>
                 )
             })}
-        </div>
-     )
+        </div >
+    )
 }
 
 export default ArticlesList;

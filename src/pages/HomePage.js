@@ -29,7 +29,6 @@ function UserHomePage() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        console.log("response.data");
         setFolders(response.data)
       })
       .catch((error) => console.log(error));
@@ -41,7 +40,24 @@ function UserHomePage() {
     getUserFolders();
   }, [] );
 
-  
+  const deleteFolder = (folderId) => {
+
+    console.log(folderId);
+
+    const storedToken = localStorage.getItem('authToken');
+
+    axios.delete(
+        `${process.env.REACT_APP_API_URL}/folders/${folderId}`,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+        .then(response => {
+            console.log("folder deleted");
+            getUserFolders()
+        })
+        .catch(e => console.log("error deleting folder...", e));
+}
+
+
   return (
     <div className="ProjectListPage">
       <p>This is the home page</p>
@@ -50,10 +66,18 @@ function UserHomePage() {
       </div>
               {folders.map((folder) => {
           return (
+            <div>
             <div className="ProjectCard card" key={folder._id} >
               <Link to={`/articles-list/${folder._id}`}>
                 <h3>{folder.title}</h3>
               </Link>
+            </div>
+              <div className="ProjectCard card" >
+              <Link to={`/update-folder/${folder._id}`}>
+                <h3>Update</h3>
+              </Link>
+              <a href="#" onClick={() => {deleteFolder(folder._id)}}>Delete</a>
+            </div>
             </div>
           );
         })}     
