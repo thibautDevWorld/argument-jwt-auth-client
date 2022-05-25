@@ -25,7 +25,28 @@ function CreateFolderPage() {
         {
             value: 3,
             label: "Politic"
-        }
+        },
+        {
+            value: 4,
+            label: "Health"
+        },
+        {
+            value: 5,
+            label: "Cooking"
+        },
+        {
+            value: 6,
+            label: "Lifestyle"
+        },
+        {
+            value: 7,
+            label: "Science"
+        },
+        {
+            value: 8,
+            label: "Funny"
+        },
+
     ];
 
 
@@ -57,7 +78,7 @@ function CreateFolderPage() {
 
     return (
         <div className="create-folder-page">
-            <p>This is the create folder page</p>
+            <h1>Create your folder</h1>
             <label htmlFor="cars">Choose a theme:</label>
             <Select
                 value={themes.value}

@@ -44,17 +44,38 @@ function CreateArticlePage() {
 
     return ( 
         <div className="create-folder-page">
-
-        <p>This is the create article page</p>
+            <h1>Create your article</h1>
         <form onSubmit={handleSubmit}>
-           
-
-            <label>Article title:</label>
+            <label>Title</label>
             <input
                 type="text"
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+            />
+            <label>Add description</label>
+            <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
+            <label>Add link</label>
+            <input
+                type="text"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+            />
+            <label>Add image link</label>
+            <input
+                type="text"
+                value={imageLink}
+                onChange={(e) => setImageLink(e.target.value)}
+            />
+            <label>Add video link</label>
+            <input
+                type="text"
+                value={videoLink}
+                onChange={(e) => setVideoLink(e.target.value)}
             />
             <button>Create an article</button>
         </form>
