@@ -13,9 +13,6 @@ function CreateArticlePage() {
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
 
-    console.log(folderId);
-
-
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [link, setLink] = useState('');

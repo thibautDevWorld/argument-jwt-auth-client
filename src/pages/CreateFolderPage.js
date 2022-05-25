@@ -1,27 +1,32 @@
 import axios from 'axios';
-import { useState } from 'react';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
-
+import Select from 'react-select';
+import './CreateFolderPage.css';
 
 
 function CreateFolderPage() {
-
-
     const storedToken = localStorage.getItem('authToken');
-    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-    // const userId = user._id
-
-
-
-    const userId = user._id
-
-    console.log(userId);
-
+    const { user } = useContext(AuthContext);
+    const userId = user._id;
 
     const [title, setTitle] = useState('');
-    const [theme, setTheme] = useState('Sport')
+    const [theme, setTheme] = useState("");
+    const themes = [
+        {
+            value: 1,
+            label: "Sport"
+        },
+        {
+            value: 2,
+            label: "People"
+        },
+        {
+            value: 3,
+            label: "Politic"
+        }
+    ];
 
 
     const navigate = useNavigate();
@@ -30,6 +35,7 @@ function CreateFolderPage() {
         e.preventDefault()
 
         const folder = { title, theme, userId }
+        console.log(folder);
 
         axios
             .post(
@@ -41,27 +47,27 @@ function CreateFolderPage() {
                 navigate('/')
             })
             .catch((error) => console.log(error));
-
     }
 
 
+
+    const handleChange = theme => {
+        setTheme(theme.label)
+    }
+
     return (
         <div className="create-folder-page">
-
             <p>This is the create folder page</p>
+            <label htmlFor="cars">Choose a theme:</label>
+            <Select
+                value={themes.value}
+                options={themes}
+                onChange={handleChange}
+                className="dropdown-menu"
+            />
+
+
             <form onSubmit={handleSubmit}>
-                <label htmlFor="cars">Choose a theme:</label>
-
-                {/* <select name="themes" id="themes" onChange={handleChange}>
-                <option value={politic} name="Politic">Politic</option>
-                <option value={people} name="People">People</option> */}
-                {/* <option value={theme}>Health</option>
-                <option value={theme}>Cooking</option>
-                <option value={theme}>Sport</option>
-                <option value={theme}>Fashion</option> */}
-                {/* </select> */}
-
-
                 <label>Folder title:</label>
                 <input
                     type="text"

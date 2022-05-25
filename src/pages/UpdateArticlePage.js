@@ -36,9 +36,7 @@ function UpdateArticlePage() {
 
    
     const [title, setTitle] = useState(article?.title)
-
-    console.log(title);
-    
+ 
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -56,7 +54,7 @@ function UpdateArticlePage() {
             )
             .then(response => {
                 // props.callbackUpdateProjectList();
-                navigate("/"); // redirect to project list
+                navigate(`/`); 
                 // navigate(`/projects/${response.data._id}`); // redirect to project page
             })
             .catch(e => console.log("error updating project...", e));
@@ -85,8 +83,6 @@ function UpdateArticlePage() {
             <button type="submit">Update</button>
 
         </form>
-
-        <Link to={`/articles-list/${article.folder}`}>List of articles</Link>
     </section>
     );
 }

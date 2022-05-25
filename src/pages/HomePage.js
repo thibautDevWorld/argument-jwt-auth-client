@@ -12,9 +12,9 @@ import { useParams } from 'react-router-dom';
 function UserHomePage() {
   const [folders, setFolders] = useState([]);
   const { userId } = useParams()
-  
-  
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+
+
+  const { storeToken, authenticateUser, isLoggedIn } = useContext(AuthContext);
 
 
 
@@ -38,7 +38,7 @@ function UserHomePage() {
   // by setting the empty dependency array - []
   useEffect(() => {
     getUserFolders();
-  }, [] );
+  }, []);
 
   const deleteFolder = (folderId) => {
 
@@ -47,41 +47,41 @@ function UserHomePage() {
     const storedToken = localStorage.getItem('authToken');
 
     axios.delete(
-        `${process.env.REACT_APP_API_URL}/folders/${folderId}`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-        )
-        .then(response => {
-            console.log("folder deleted");
-            getUserFolders()
-        })
-        .catch(e => console.log("error deleting folder...", e));
-}
+      `${process.env.REACT_APP_API_URL}/folders/${folderId}`,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+    )
+      .then(response => {
+        console.log("folder deleted");
+        getUserFolders()
+      })
+      .catch(e => console.log("error deleting folder...", e));
+  }
 
 
   return (
     <div className="ProjectListPage">
       <p>This is the home page</p>
       <div>
-        <NavLink to="/create-folder">Create a folder</NavLink>
+        {isLoggedIn && <NavLink to="/create-folder">Create a folder</NavLink>}
       </div>
-              {folders.map((folder) => {
-          return (
-            <div>
-            <div className="ProjectCard card" key={folder._id} >
+      {folders.map((folder) => {
+        return (
+          <div key={folder._id}>
+            <div className="ProjectCard card"  >
               <Link to={`/articles-list/${folder._id}`}>
                 <h3>{folder.title}</h3>
               </Link>
             </div>
-              <div className="ProjectCard card" >
+            <div className="ProjectCard card" >
               <Link to={`/update-folder/${folder._id}`}>
                 <h3>Update</h3>
               </Link>
-              <a href="#" onClick={() => {deleteFolder(folder._id)}}>Delete</a>
+              <a href="#" onClick={() => { deleteFolder(folder._id) }}>Delete</a>
             </div>
-            </div>
-          );
-        })}     
-       
+          </div>
+        );
+      })}
+
     </div>
   );
 }
