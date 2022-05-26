@@ -19,28 +19,31 @@ function LoginPage(props) {
 
 
 
-    const handleLoginSubmit =  (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
 
         const requestBody = { email, password };
 
-        axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
-            .then((response) => {
+       try { 
+           
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
+          
                 const jwt = response.data.authToken;
                 // console.log('Login was sucessful. JWT token: ', jwt);
 
-                storeToken(jwt);
+                await storeToken(jwt);
                 authenticateUser();
                 
-            })
-            .then(()=> {
+           
+           
                 navigate('/');
-            })
-            .catch((error) => {
+          
+        }
+            catch(error) {
                 const errorDescription = error.response.data.message;
                 console.log("error loggin in...", errorDescription)
                 setErrorMessage(errorDescription);
-            })
+            }
     };
 
     return (

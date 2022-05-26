@@ -13,6 +13,10 @@ import { useState, useContext, useEffect } from 'react';
 import axios from "axios";
 import { AuthContext } from './context/auth.context';
 import UpdateArticlePage from "./pages/UpdateArticlePage";
+import IsAnon from "./components/IsAnon";
+
+
+
 
 function App() {
 
@@ -53,9 +57,9 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path='/signup' element={<SignUpPage />} />
-        <Route path="/login" element={<LogInPage />} />
-        <Route path='/' element={ <IsPrivate> <HomePage /> </IsPrivate> } />
+        <Route path='/signup' element={ <IsAnon><SignUpPage /></IsAnon>} />
+        <Route path="/login" element={ <IsAnon> <LogInPage /></IsAnon>} />
+        <Route path='/' element={ <IsPrivate>  <HomePage /> </IsPrivate> } />
         <Route path="/create-folder" element={ <IsPrivate> <CreateFolderPage /> </IsPrivate> } />
         <Route path='/update-folder/:folderId' element={ <IsPrivate> <UpdateFolderPage folders={folders} callbackUpdateProjectList={getUserFolders} />  </IsPrivate>} />
         <Route path="/articles-list/:folderId" element={ <IsPrivate> <ArticlesList /> </IsPrivate> } />
