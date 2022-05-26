@@ -12,6 +12,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import './HomePage.css';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -47,8 +48,7 @@ function UserHomePage() {
       .catch((error) => console.log(error));
   };
 
-  // We set this effect will run only once, after the initial render
-  // by setting the empty dependency array - []
+
   useEffect(() => {
     getUserFolders();
   }, []);
@@ -72,74 +72,42 @@ function UserHomePage() {
 
 
   return (
-
-
-
-
-   
     <div>
-        <div className="button-create-folder">
-          {isLoggedIn && <NavLink to="/create-folder">Create a folder</NavLink>}
-        </div>
+      <Box textAlign='center' padding='30px'>
+        <Button variant="contained" style={{ background: '#ffb74d' }} >
+          <NavLink to="/create-folder" className="create-folder-btn">Create a folder</NavLink>
+        </Button >
+      </Box>
       {folders.map((folder) => {
         return (
-          
+
           <div className="test" key={folder._id}>
-          <Card sx={{ minWidth: 275 }} >
-            <CardContent>
-              <Typography variant="h4" component="div">
-                {folder.title}
-              </Typography>
+            <Card sx={{ minWidth: 275 }} >
+              <CardContent>
+                <Typography variant="h4" component="div">
+                  {folder.title}
+                </Typography>
 
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {folder.theme}
-              </Typography>
-              <Typography variant="b2">
-                <Link to={`/articles-list/${folder._id}`}>Articles</Link>
-              </Typography>
-              <Typography variant="b2">
-                <Link to={`/update-folder/${folder._id}`}>Update</Link>
-              </Typography>
-              <Typography variant="b2">
-              <a href="#" onClick={() => { deleteFolder(folder._id) }}>Delete</a>
-              </Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  {folder.theme}
+                </Typography>
+                <Typography variant="b2">
+                  <Link to={`/articles-list/${folder._id}`}>Articles</Link>
+                </Typography>
+                <Typography variant="b2">
+                  <Link to={`/update-folder/${folder._id}`}>Update</Link>
+                </Typography>
+                <Typography variant="b2">
+                  <a href="#" onClick={() => { deleteFolder(folder._id) }}>Delete</a>
+                </Typography>
 
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
           </div>
-          )
+        )
       }
       )}
-
-
     </div>
-
-
-    
-    // <div className="ProjectListPage">
-    //   <p>This is the home page</p>
-    //   <div>
-    //     {isLoggedIn && <NavLink to="/create-folder">Create a folder</NavLink>}
-    //   </div>
-    //   {folders.map((folder) => {
-    //     return (
-    //       <div key={folder._id}>
-    //         <div className="ProjectCard card"  >
-    //           <Link to={`/articles-list/${folder._id}`}>
-    //             <h3>{folder.title}</h3>
-    //           </Link>
-    //         </div>
-    //         <div className="ProjectCard card" >
-    //           <Link to={`/update-folder/${folder._id}`}>
-    //             <h3>Update</h3>
-    //           </Link>
-    //           <a href="#" onClick={() => { deleteFolder(folder._id) }}>Delete</a>
-    //         </div>
-    //       </div>
-    //     );
-    //   })}
-
-    // </div>
   )
 }
 

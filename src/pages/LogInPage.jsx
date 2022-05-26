@@ -6,6 +6,7 @@ import { AuthContext } from "../context/auth.context"
 import { Container } from "@mui/system";
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 
 function LoginPage(props) {
@@ -44,7 +45,11 @@ function LoginPage(props) {
             <Container maxWidth='xs'>
                 <form onSubmit={handleLoginSubmit} className='form-login'>
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
-                    <h3>Login</h3>
+                    <Typography variant="h4" component="div">
+                     Welcome
+                    </Typography>
+                    
+                    <p>Provide your login, please !</p>
                     <div className="mb-3">
 
                         <Input
@@ -71,7 +76,7 @@ function LoginPage(props) {
                     </div>
 
                     <div className="d-grid">
-                        <Button variant="contained" type="submit" className="btn btn-primary">
+                        <Button variant="contained" type="submit" className="btn btn-primary submit-btn" style={{ background: '#651fff' }}>
                             Submit
                         </Button>
                     </div>

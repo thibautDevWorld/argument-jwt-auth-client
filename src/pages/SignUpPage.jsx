@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Container } from "@mui/system";
+import Button from '@mui/material/Button';
+import { Input } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import './SignUpPage.css';
 
 
 function SignupPage(props) {
@@ -30,35 +35,48 @@ function SignupPage(props) {
 
     return (
         <div className="SignupPage">
-            <h1>Signup</h1>
+            <Container maxWidth='xs'>
+                <form onSubmit={handleSignupSubmit} className='form-signup'>
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    <Typography variant="h2" component="div" style={{ color: '#651fff' }}>
+                        Argument
+                    </Typography>
 
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    <p>Please signup</p>
+                    <div className="mb-3">
 
-            <form onSubmit={handleSignupSubmit}>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    required={true}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                        <Input
+                            type="email"
+                            className="form-control"
+                            placeholder="Enter email"
+                            name="email"
+                            value={email}
+                            required={true}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="mb-3">
 
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    required={true}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                        <Input
+                            type="password"
+                            className="form-control"
+                            placeholder="Enter password"
+                            name="password"
+                            value={password}
+                            required={true}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
 
-
-                <button type="submit">Sign Up</button>
-            </form>
-
-            <p>Already have an account?</p>
-            <Link to={"/login"}> Login</Link>
+                    <div className="d-grid">
+                        <Button variant="contained" type="submit" className="btn btn-primary submit-btn" style={{ background: '#651fff' }}>
+                            Submit
+                        </Button>
+                    </div>
+                    <p>Already have an account?</p>
+                    <Link to={"/login"}> Login</Link>
+                </form>
+            </Container>
         </div>
     )
 }
