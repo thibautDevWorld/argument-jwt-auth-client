@@ -84,16 +84,16 @@ function UserHomePage() {
           <div className="test" key={folder._id}>
             <Card sx={{ minWidth: 275 }} >
               <CardContent>
-                <Typography variant="h4" component="div">
+                <Typography variant="h4" component={Link} to={`/articles-list/${folder._id}`} className='toward-articles'>
                   {folder.title}
                 </Typography>
 
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   {folder.theme}
                 </Typography>
-                <Typography variant="b2">
+                {/* <Typography variant="b2">
                   <Link to={`/articles-list/${folder._id}`}>Articles</Link>
-                </Typography>
+                </Typography> */}
                 <Typography variant="b2">
                   <Link to={`/update-folder/${folder._id}`}>Update</Link>
                 </Typography>

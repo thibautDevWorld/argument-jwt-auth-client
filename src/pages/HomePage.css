@@ -4,3 +4,8 @@
     display: flex;
     
 }
+
+.toward-articles {
+    text-decoration: none;
+    color: inherit;
+}

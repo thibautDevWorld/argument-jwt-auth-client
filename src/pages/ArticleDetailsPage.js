@@ -25,10 +25,13 @@ function ArticleDetailsPage() {
   const { articleId } = useParams();
   const [article, setArticle] = useState({});
 
-  const storedToken = localStorage.getItem('authToken');
+  
 
 
   const getDetails = () => {
+
+    const storedToken = localStorage.getItem('authToken');
+
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/articles/${articleId}`,
