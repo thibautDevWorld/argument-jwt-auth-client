@@ -4,6 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
 import Select from 'react-select';
 import './CreateFolderPage.css';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+import Typography from '@mui/material/Typography';
 
 
 function CreateFolderPage() {
@@ -64,41 +70,51 @@ function CreateFolderPage() {
                 { headers: { Authorization: `Bearer ${storedToken}` } }
             )
             .then((response) => {
-                console.log(response.data)
                 navigate('/')
             })
             .catch((error) => console.log(error));
     }
-
-
 
     const handleChange = theme => {
         setTheme(theme.label)
     }
 
     return (
-        <div className="create-folder-page">
-            <h1>Create your folder</h1>
-            <label htmlFor="cars">Choose a theme:</label>
-            <Select
-                value={themes.value}
-                options={themes}
-                onChange={handleChange}
-                className="dropdown-menu"
-            />
+        <div className='form-create-folder'>
+            <CssBaseline />
+            <Container maxWidth="sm">
+                <Box sx={{ height: '50vh' }}>
+                    <Typography variant="h3" component="div" style={{ color: '#651fff' }}>
+                        Create <br />your folder
+                    </Typography>
 
+                    
+                    <div className='dropdown-menu-parent'>
+                        <Select
+                            placeholder="Choose a theme"
+                            value={themes.value}
+                            options={themes}
+                            onChange={handleChange}
+                            className="dropdown-menu"
+                        />
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <Input type="text"
+                            className="form-control"
+                            placeholder="Enter your title"
+                            name="title"
+                            value={title}
+                            required={true}
+                            onChange={(e) => setTitle(e.target.value)} />
 
-            <form onSubmit={handleSubmit}>
-                <label>Folder title:</label>
-                <input
-                    type="text"
-                    required
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <button>Create a folder</button>
-            </form>
-
+                        <div className="d-grid">
+                            <Button variant="contained" type="submit" className="btn btn-primary submit-btn" style={{ background: '#651fff' }}>
+                                Create a folder
+                            </Button>
+                        </div>
+                    </form>
+                </Box>
+            </Container>
         </div>
     )
 }

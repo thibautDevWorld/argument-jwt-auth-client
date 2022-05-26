@@ -50,6 +50,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import CssBaseline from '@mui/material/CssBaseline';
 
 
 
@@ -57,6 +58,7 @@ function ButtonAppBar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <div >
+      <CssBaseline />
       <Box sx={{ flexGrow: 2 }}  >
         <AppBar position="static" style={{ background: '#6200EE' }} elevation={2} >
           <Toolbar>

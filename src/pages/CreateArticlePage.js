@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
 import { useParams } from 'react-router-dom'
+import CssBaseline from '@mui/material/CssBaseline';
 
 function CreateArticlePage() {
 
@@ -44,6 +45,7 @@ function CreateArticlePage() {
 
     return ( 
         <div className="create-folder-page">
+            <CssBaseline />
             <h1>Create your article</h1>
         <form onSubmit={handleSubmit}>
             <label>Title</label>

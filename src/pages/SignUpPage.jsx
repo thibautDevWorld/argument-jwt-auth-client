@@ -35,6 +35,7 @@ function SignupPage(props) {
 
     return (
         <div className="SignupPage">
+            
             <Container maxWidth='xs'>
                 <form onSubmit={handleSignupSubmit} className='form-signup'>
                     {errorMessage && <p className="error-message">{errorMessage}</p>}

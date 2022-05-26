@@ -1,3 +1,10 @@
+.dropdown-menu-parent {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+
 .dropdown-menu {
     width: 200px;
 }
@@ -8,4 +15,19 @@
 
 .test {
     margin: 30px
+}
+
+
+.form-create-folder {
+    text-align: center;
+    margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+    transform: translateY(-70%); /* tiré de la moitié de sa propre hauteur */
+  }
+
+.d-grid {
+  margin-top: 50px;
+}
+
+form {
+    margin-top: 30px;
 }

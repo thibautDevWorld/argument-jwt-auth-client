@@ -6,11 +6,13 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import CssBaseline from '@mui/material/CssBaseline';
 
 
 
 const bull = (
   <Box
+  
     component="span"
     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
   >
@@ -51,13 +53,11 @@ function ArticleDetailsPage() {
 
 
   return (
-    // <div>
-    //     <p>Article Details</p>
-    //     <p>{article.title}</p>
-    // </div>
-
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
+    
+    <Box padding='30px'>
+    <Card sx={{ minWidth: 275 }}  >
+      <CssBaseline />
+      <CardContent >
 
         <Typography variant="h3" component="div">
           {article.title}
@@ -88,6 +88,7 @@ function ArticleDetailsPage() {
         </Typography>
       </CardContent>
     </Card>
+    </Box>
 
 
   );

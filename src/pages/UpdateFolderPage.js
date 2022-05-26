@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Route, useNavigate, useParams } from "react-router-dom";
-
+import CssBaseline from '@mui/material/CssBaseline';
 
 function UpdateFolderPage(props) {
 
@@ -41,6 +41,7 @@ function UpdateFolderPage(props) {
 
     return (
         <section className="edit-folder-page">
+           <CssBaseline /> 
             <h1>Edit</h1>
 
             <form onSubmit={handleSubmit}>

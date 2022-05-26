@@ -13,6 +13,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './HomePage.css';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -73,6 +74,7 @@ function UserHomePage() {
 
   return (
     <div>
+      <CssBaseline />
       <Box textAlign='center' padding='30px'>
         <Button variant="contained" style={{ background: '#ffb74d' }} >
           <NavLink to="/create-folder" className="create-folder-btn">Create a folder</NavLink>
