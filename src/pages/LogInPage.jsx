@@ -19,7 +19,7 @@ function LoginPage(props) {
 
 
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit =  (e) => {
         e.preventDefault();
 
         const requestBody = { email, password };
@@ -31,8 +31,10 @@ function LoginPage(props) {
 
                 storeToken(jwt);
                 authenticateUser();
-                navigate('/');
                 
+            })
+            .then(()=> {
+                navigate('/');
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
