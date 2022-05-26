@@ -7,6 +7,7 @@ import { Container } from "@mui/system";
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 
 
 function LoginPage(props) {
@@ -81,7 +82,7 @@ function LoginPage(props) {
                         </Button>
                     </div>
                     <p className="forgot-password text-right">
-                        Forgot <a href={"/signup"}>password?</a>
+                        Forgot <Link to={"/signup"}>password?</Link>
                     </p>
                 </form>
             </Container>

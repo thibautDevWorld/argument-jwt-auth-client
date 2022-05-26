@@ -86,7 +86,7 @@ function ArticlesList() {
                                     <Link to={`/update-article/${article._id}`}>Update</Link>
                                 </Typography>
                                 <Typography variant="b2">
-                                    <a href="#" onClick={() => { deleteArticle(article._id) }}>Delete</a>
+                                    <Link to="#" onClick={() => { deleteArticle(article._id) }}>Delete</Link>
                                 </Typography>
                             </CardContent>
                         </Card>

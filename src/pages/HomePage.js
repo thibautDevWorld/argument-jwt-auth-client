@@ -15,10 +15,6 @@ import Typography from '@mui/material/Typography';
 import './HomePage.css';
 import CssBaseline from '@mui/material/CssBaseline';
 
-// import '@fontsource/roboto/300.css';
-// import '@fontsource/roboto/400.css';
-// import '@fontsource/roboto/500.css';
-// import '@fontsource/roboto/700.css';
 
 const bull = (
   <Box
@@ -100,7 +96,7 @@ function UserHomePage() {
                   <Link to={`/update-folder/${folder._id}`}>Update</Link>
                 </Typography>
                 <Typography variant="b2">
-                  <a href="#" onClick={() => { deleteFolder(folder._id) }}>Delete</a>
+                  <Link to="#" onClick={() => { deleteFolder(folder._id) }}>Delete</Link>
                 </Typography>
 
               </CardContent>

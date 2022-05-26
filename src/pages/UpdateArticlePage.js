@@ -77,8 +77,8 @@ function UpdateArticlePage() {
                 <input
                     type="text"
                     name="title"
-                    value={title}
-                    required={true}
+                    defaultValue={article.title}
+                    
                     onChange={(e) => setTitle(e.target.value)}
                 />
             </label>
@@ -87,8 +87,8 @@ function UpdateArticlePage() {
                 <input
                     type="text"
                     name="description"
-                    value={description}
-                    required={true}
+                    defaultValue={article.description}
+                   
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </label>
@@ -97,8 +97,8 @@ function UpdateArticlePage() {
                 <input
                     type="text"
                     name="Link"
-                    value={link}
-                    required={true}
+                    defaultValue={article.link}
+                    
                     onChange={(e) => setLink(e.target.value)}
                 />
             </label>
@@ -107,8 +107,8 @@ function UpdateArticlePage() {
                 <input
                     type="text"
                     name="imageLink"
-                    value={imageLink}
-                    required={true}
+                    defaultValue={article.imageLink}
+                   
                     onChange={(e) => setImageLink(e.target.value)}
                 />
             </label>
@@ -117,8 +117,7 @@ function UpdateArticlePage() {
                 <input
                     type="text"
                     name="videoLink"
-                    value={videoLink}
-                    required={true}
+                    defaultValue={article.videoLink}
                     onChange={(e) => setVideoLink(e.target.value)}
                 />
             </label>

@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -72,19 +72,19 @@ function ArticleDetailsPage() {
         <Typography variant="body2">
           Page link
           <br />
-          {<a href={`${article.link}`} target="_blank">{article.link}</a>}
+          {<Link to={`${article.link}`} target="_blank">{article.link}</Link>}
         </Typography>
         <br />
         <Typography variant="body2">
           Image link
           <br />
-          {<a href={`${article.imageLink}`} target="_blank">{article.imageLink}</a>}
+          {<Link to={`${article.imageLink}`} target="_blank">{article.imageLink}</Link>}
         </Typography>
         <br />
         <Typography variant="body2">
           Video link
           <br />
-          {<a href={`${article.videoLink}`} target="_blank">{article.videoLink}</a>}
+          {<Link to={`${article.videoLink}`} target="_blank">{article.videoLink}</Link>}
         </Typography>
       </CardContent>
     </Card>

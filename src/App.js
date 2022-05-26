@@ -55,13 +55,13 @@ function App() {
       <Routes>
         <Route path='/signup' element={<SignUpPage />} />
         <Route path="/login" element={<LogInPage />} />
-        <Route path='/' element={<HomePage />} />
-        <Route path="/create-folder" element={<CreateFolderPage />} />
-        <Route path='/update-folder/:folderId' element={<UpdateFolderPage folders={folders} callbackUpdateProjectList={getUserFolders} />} />
-        <Route path="/articles-list/:folderId" element={<ArticlesList />} />
-        <Route path="/article-details/:articleId" element={<ArticleDetailsPage />} />
-        <Route path='/create-article/:folderId' element={<CreateArticlePage />} />
-        <Route path='/update-article/:articleId' element={<UpdateArticlePage folders={folders}/>} />
+        <Route path='/' element={ <IsPrivate> <HomePage /> </IsPrivate> } />
+        <Route path="/create-folder" element={ <IsPrivate> <CreateFolderPage /> </IsPrivate> } />
+        <Route path='/update-folder/:folderId' element={ <IsPrivate> <UpdateFolderPage folders={folders} callbackUpdateProjectList={getUserFolders} />  </IsPrivate>} />
+        <Route path="/articles-list/:folderId" element={ <IsPrivate> <ArticlesList /> </IsPrivate> } />
+        <Route path="/article-details/:articleId" element={ <IsPrivate> <ArticleDetailsPage /> </IsPrivate> } />
+        <Route path='/create-article/:folderId' element={ <IsPrivate> <CreateArticlePage /> </IsPrivate> } />
+        <Route path='/update-article/:articleId' element={ <IsPrivate> <UpdateArticlePage folders={folders}/> </IsPrivate> } />
       </Routes>
 
     </div >

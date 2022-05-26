@@ -50,7 +50,7 @@ function UpdateFolderPage(props) {
                     <input
                         type="text"
                         name="title"
-                        value={title}
+                        defaultValue={title}
                         required={true}
                         onChange={(e) => setTitle(e.target.value)}
                     />
