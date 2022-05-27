@@ -62,7 +62,7 @@ function ArticleDetailsPage() {
         <Typography variant="h3" component="div">
           {article.title}
         </Typography>
-        <br />
+        <br />       
         <Typography variant="body2">
           Description
           <br />
@@ -72,19 +72,19 @@ function ArticleDetailsPage() {
         <Typography variant="body2">
           Page link
           <br />
-          {<Link to={`${article.link}`} target="_blank">{article.link}</Link>}
+          <a href={`${article.link}`} target="_blank">{article.link}</a>
         </Typography>
         <br />
         <Typography variant="body2">
           Image link
           <br />
-          {<Link to={`${article.imageLink}`} target="_blank">{article.imageLink}</Link>}
+          <a to={`${article.imageLink}`} target="_blank">{article.imageLink}</a>
         </Typography>
         <br />
         <Typography variant="body2">
           Video link
           <br />
-          {<Link to={`${article.videoLink}`} target="_blank">{article.videoLink}</Link>}
+          <a to={`${article.videoLink}`} target="_blank">{article.videoLink}</a>
         </Typography>
       </CardContent>
     </Card>

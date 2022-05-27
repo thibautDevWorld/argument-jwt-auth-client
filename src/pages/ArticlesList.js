@@ -10,11 +10,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './ArticleList.css';
 import CssBaseline from '@mui/material/CssBaseline';
+import DeleteIcon from '@mui/icons-material/Delete';
+import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
 
-// import '@fontsource/roboto/300.css';
-// import '@fontsource/roboto/400.css';
-// import '@fontsource/roboto/500.css';
-// import '@fontsource/roboto/700.css';
+
 
 const bull = (
     <Box
@@ -76,20 +75,21 @@ function ArticlesList() {
             {articles.map((article) => {
                 return (
 
-                    <div className="test" key={article._id}>
-                        <Card sx={{ minWidth: 275 }} >
-                            <CardContent>
+                    <div className="article-module" key={article._id}>
+                        
+                        <Card sx={{ minWidth: 275, maxWidth: 800 }} className='main-card'>
+                            <CardContent className='card'>
                                 <Typography variant="h4" component={Link} to={`/article-details/${article._id}`} className='toward-articles'>
                                     {article.title}
                                 </Typography>
-                                <Typography variant="b2">
-                                    <Link to={`/update-article/${article._id}`}>Update</Link>
-                                </Typography>
-                                <Typography variant="b2">
-                                    <Link to="#" onClick={() => { deleteArticle(article._id) }}>Delete</Link>
+                                
+                                <Typography variant="b2" className='icons'>
+                                <Link to={`/update-article/${article._id}`}><BrowserUpdatedIcon sx={{ color: '#ffb74d' }} fontSize='large' /></Link>
+                                    <Link to="#" onClick={() => { deleteArticle(article._id) }}><DeleteIcon sx={{ color: '#ffb74d' }} fontSize='large' /></Link>
                                 </Typography>
                             </CardContent>
                         </Card>
+                        
                     </div>
                 )
             }

@@ -2,3 +2,15 @@
     text-decoration: none;
     color: inherit;
 }
+
+
+.card {
+    display: flex;
+    justify-content:space-between;
+    align-items: flex-end;
+}
+
+.main-card {
+    margin: 30px;
+}
+

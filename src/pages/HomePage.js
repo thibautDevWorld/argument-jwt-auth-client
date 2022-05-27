@@ -14,6 +14,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './HomePage.css';
 import CssBaseline from '@mui/material/CssBaseline';
+import DeleteIcon from '@mui/icons-material/Delete';
+import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
+import { maxWidth } from "@mui/system";
 
 
 const bull = (
@@ -80,25 +83,20 @@ function UserHomePage() {
         return (
 
           <div className="test" key={folder._id}>
-            <Card sx={{ minWidth: 275 }} >
+            <Card sx={{ minWidth: 275, maxWidth: 600}} >
               <CardContent>
                 <Typography variant="h4" component={Link} to={`/articles-list/${folder._id}`} className='toward-articles'>
                   {folder.title}
                 </Typography>
-
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   {folder.theme}
                 </Typography>
-                {/* <Typography variant="b2">
-                  <Link to={`/articles-list/${folder._id}`}>Articles</Link>
-                </Typography> */}
                 <Typography variant="b2">
-                  <Link to={`/update-folder/${folder._id}`}>Update</Link>
+                  <Link to={`/update-folder/${folder._id}`}><BrowserUpdatedIcon sx={{ color: '#ffb74d' }} fontSize='large' /></Link>
                 </Typography>
                 <Typography variant="b2">
-                  <Link to="#" onClick={() => { deleteFolder(folder._id) }}>Delete</Link>
+                  <Link to="#" onClick={() => { deleteFolder(folder._id) }}><DeleteIcon sx={{ color: '#ffb74d' }} fontSize='large' /></Link>
                 </Typography>
-
               </CardContent>
             </Card>
           </div>
