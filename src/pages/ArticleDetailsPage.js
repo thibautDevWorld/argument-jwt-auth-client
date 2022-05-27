@@ -78,13 +78,13 @@ function ArticleDetailsPage() {
         <Typography variant="body2">
           Image link
           <br />
-          <a to={`${article.imageLink}`} target="_blank">{article.imageLink}</a>
+          <a href={`${article.imageLink}`} target="_blank">{article.imageLink}</a>
         </Typography>
         <br />
         <Typography variant="body2">
           Video link
           <br />
-          <a to={`${article.videoLink}`} target="_blank">{article.videoLink}</a>
+          <a href={`${article.videoLink}`} target="_blank">{article.videoLink}</a>
         </Typography>
       </CardContent>
     </Card>
